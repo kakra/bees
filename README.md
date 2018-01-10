@@ -348,7 +348,7 @@ previous versions won't work.
 Build from source
 -----------------
 
-Build with `make`. The build produces `bin/bees` and `lib/libcrucible.so`,
+Build with `make`. The build produces `bin/bees` and `lib/libcrucible.so.*`,
 which must be copied to somewhere in `$PATH` and `$LD_LIBRARY_PATH`
 on the target system respectively.
 

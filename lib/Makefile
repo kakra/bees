@@ -1,6 +1,8 @@
 TAG := $(shell git describe --always --dirty || echo UNKNOWN)
+VERSION := $(shell echo $(TAG:v%=%) | cut -d- -f1)
+MAJOR := $(shell echo $(VERSION) | cut -d. -f1)
 
-default: libcrucible.so
+default: libcrucible.so.$(VERSION)
 
 OBJS = \
 	crc64.o \
@@ -29,8 +31,13 @@ depends.mk: *.cc
 
 -include depends.mk
 
+install: libcrucible.so.$(VERSION)
+	install -Dm644 libcrucible.so.$(VERSION) $(DESTDIR)$(USRLIB_PREFIX)/libcrucible.so.$(VERSION)
+
 %.o: %.cc ../include/crucible/%.h
 	$(CXX) $(CXXFLAGS) -fPIC -o $@ -c $<
 
-libcrucible.so: $(OBJS) Makefile
-	$(CXX) $(LDFLAGS) -fPIC -o $@ $(OBJS) -shared -Wl,-soname,$@ -luuid
+libcrucible.so.$(VERSION): $(OBJS) Makefile
+	$(CXX) $(LDFLAGS) -fPIC -o $@ $(OBJS) -shared -Wl,-soname,$(@:so.$(VERSION)=so.$(MAJOR)) -luuid
+	ln -snf $@ $(@:so.$(VERSION)=so.$(MAJOR))
+	ln -snf $@ $(@:so.$(VERSION)=so)

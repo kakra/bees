@@ -40,7 +40,7 @@ README.html: README.md
 
 install_bees: ## Install bees + libs
 install_bees: lib src test
-	install -Dm644 lib/libcrucible.so $(DESTDIR)$(USRLIB_PREFIX)/libcrucible.so
+	$(MAKE) USRLIB_PREFIX=$(USRLIB_PREFIX) -C lib install
 	install -Dm755 bin/bees	$(DESTDIR)$(LIBEXEC_PREFIX)/bees
 
 install_scripts: ## Install scipts
