@@ -33,6 +33,7 @@ depends.mk: *.cc
 
 install: libcrucible.so.$(VERSION)
 	install -Dm644 libcrucible.so.$(VERSION) $(DESTDIR)$(USRLIB_PREFIX)/libcrucible.so.$(VERSION)
+	ldconfig -n $(DESTDIR)$(USRLIB_PREFIX)
 
 %.o: %.cc ../include/crucible/%.h
 	$(CXX) $(CXXFLAGS) -fPIC -o $@ -c $<
