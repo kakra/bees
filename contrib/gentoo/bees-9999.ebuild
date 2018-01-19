@@ -21,7 +21,7 @@ PATCHES="${FILESDIR}/v0.5-gentoo_build.patch"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="test"
 
 RDEPEND=">=sys-apps/util-linux-2.30.2"
 DEPEND="$RDEPEND
@@ -37,4 +37,5 @@ src_configure() {
 	echo PREFIX=/ >${S}/localconf || die
 	echo LIBEXEC_PREFIX=/usr/libexec >>${S}/localconf || die
 	echo LIBDIR=$(get_libdir) >>${S}/localconf || die
+	echo DEFAULT_MAKE_TARGET=all >>${S}/localconf || die
 }

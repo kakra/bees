@@ -21,6 +21,9 @@ default: $(DEFAULT_MAKE_TARGET)
 all: lib src scripts README.html
 reallyall: all test
 
+check:
+	@echo Nothing to be checked.
+
 clean: ## Cleanup
 	git clean -dfx -e localconf
 
