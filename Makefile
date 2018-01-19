@@ -24,6 +24,11 @@ reallyall: all test
 check:
 	@echo Nothing to be checked.
 
+release: NEWS
+
+NEWS:
+	git tag --list --sort -v:refname -n50 >$@
+
 clean: ## Cleanup
 	git clean -dfx -e localconf
 
