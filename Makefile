@@ -26,6 +26,11 @@ all: lib src scripts
 docs: README.html
 reallyall: all docs test
 
+release: NEWS
+
+NEWS:
+	git tag --list --sort -v:refname -n50 >$@
+
 clean: ## Cleanup
 	git clean -dfx -e localconf
 
