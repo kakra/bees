@@ -509,7 +509,7 @@ Command Line Options
     * Mode 1: scan extents in round-robin order from each subvol.
 * --timestamps (-t)
   * Enable timestamps in log output.
-* --notimestamps (-T)
+* --no-timestamps (-T)
   * Disable timestamps in log output.
 * --absolute-paths (-p)
   * Paths in log output will be absolute.
