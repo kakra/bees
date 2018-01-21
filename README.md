@@ -470,7 +470,13 @@ There are some runtime configurable options using environment variables:
   human readable, but understanding it probably requires reading the source.
   You can watch bees run in realtime with a command like:
 
-	watch -n1 cat $BEESSTATUS
+	`$ watch -n1 cat $BEESSTATUS`
+
+  There's also a handy tool called `beestop` which finds the running bees
+  instance and extracts the BEESSTATUS variable from its environment. Just
+  run it as root:
+
+  `$ sudo beestop`
 
 Other options (e.g. interval between filesystem crawls) can be configured
 in src/bees.h or on the cmdline (see 'Command Line Options' below).
