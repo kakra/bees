@@ -14,4 +14,5 @@ make.log.new
 localconf
 lib/configure.h
 scripts/beesd
+scripts/beestop
 scripts/beesd@.service

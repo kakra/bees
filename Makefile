@@ -45,7 +45,7 @@ test: lib src
 scripts/%: scripts/%.in
 	$(TEMPLATE_COMPILER)
 
-scripts: scripts/beesd scripts/beesd@.service
+scripts: scripts/beesd scripts/beesd@.service scripts/beestop
 
 README.html: README.md
 	$(MARKDOWN) README.md > README.html.new
@@ -66,6 +66,7 @@ install_bees: install_libs src $(RUN_INSTALL_TESTS)
 install_scripts: ## Install scipts
 install_scripts: scripts
 	install -Dm755 scripts/beesd $(DESTDIR)$(PREFIX)/sbin/beesd
+	install -Dm755 scripts/beestop $(DESTDIR)$(PREFIX)/sbin/beestop
 	install -Dm644 scripts/beesd.conf.sample $(DESTDIR)/$(ETC_PREFIX)/bees/beesd.conf.sample
 ifneq (SYSTEMD_SYSTEM_UNIT_DIR,)
 	install -Dm644 scripts/beesd@.service $(DESTDIR)$(SYSTEMD_SYSTEM_UNIT_DIR)/beesd@.service
