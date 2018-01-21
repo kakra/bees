@@ -1,5 +1,6 @@
 PROGRAMS = \
 	chatter \
+	configparser \
 	crc64 \
 	fd \
 	limits \

@@ -6,6 +6,7 @@ default: libcrucible.so
 CRUCIBLE_OBJS = \
 	chatter.o \
 	cleanup.o \
+	config-file.o \
 	crc64.o \
 	error.o \
 	extentwalker.o \
