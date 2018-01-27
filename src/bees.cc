@@ -206,7 +206,7 @@ bees_addr_check(int64_t v)
 string
 pretty(double d)
 {
-	static const char * units[] = { "", "K", "M", "G", "T", "P", "E" };
+	static const char * units[] = { "", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei" };
 	static const char * *units_stop = units + sizeof(units) / sizeof(units[0]) - 1;
 	const char * *unit = units;
 	while (d >= 1024 && unit < units_stop) {
@@ -214,7 +214,7 @@ pretty(double d)
 		++unit;
 	}
 	ostringstream oss;
-	oss << (round(d * 1000.0) / 1000.0) << *unit;
+	oss << (round(d * 1000.0) / 1000.0) << *unit << "B";
 	return oss.str();
 }
 
