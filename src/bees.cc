@@ -115,9 +115,9 @@ BeesNote::~BeesNote()
 	tl_next = m_prev;
 	unique_lock<mutex> lock(s_mutex);
 	if (tl_next) {
-		s_status[gettid()] = tl_next;
+		s_status[crucible::gettid()] = tl_next;
 	} else {
-		s_status.erase(gettid());
+		s_status.erase(crucible::gettid());
 	}
 }
 
@@ -128,7 +128,7 @@ BeesNote::BeesNote(function<void(ostream &os)> f) :
 	m_prev = tl_next;
 	tl_next = this;
 	unique_lock<mutex> lock(s_mutex);
-	s_status[gettid()] = tl_next;
+	s_status[crucible::gettid()] = tl_next;
 }
 
 void
