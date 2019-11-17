@@ -113,6 +113,7 @@ BeesHashTable::flush_dirty_extent(uint64_t extent_index)
 	}
 
 	bool wrote_extent = false;
+	BEESLOGINFO("flushing extent #" << extent_index << " of " << m_extents << " extents");
 
 	catch_all([&]() {
 		uint8_t *dirty_extent     = m_extent_ptr[extent_index].p_byte;
